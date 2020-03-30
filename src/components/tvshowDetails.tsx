@@ -66,7 +66,9 @@ export default function tvshowDetails(props: ITVShowSearch): JSX.Element {
                 <tr>
                   <td>Runtime: </td>
                   <td>
-                    <strong>{props.runtime}</strong>
+                    <strong>
+                      {props.runtime ? `${props.runtime} mins` : "-"}
+                    </strong>
                   </td>
                 </tr>
                 <tr>

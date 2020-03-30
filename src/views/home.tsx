@@ -10,7 +10,7 @@ import { ErrorHandler } from "../factories/ErrorHandler";
 type FormElem = React.FormEvent<HTMLFormElement>;
 
 const SEARCH = "SEARCH";
-const LOADING = "LOADING";
+const LOADING = "Loading ...";
 
 export default function HomeView() {
   const [searchTerm, handleSearch] = React.useState<string>("");
@@ -40,7 +40,7 @@ export default function HomeView() {
     APICall(route, method, data)
       .then((res: IAPIResponse) => handleAPIResponse(res.data, resType))
       .catch((err: any) => {
-        handleError(ErrorHandler(err, `No TV Shows with the name '${searchTerm}' found!`));
+        handleError(ErrorHandler(err, `No TV Shows with the name '${searchTerm}' was found!`));
         handleLoading("");
       });
   };
@@ -59,7 +59,7 @@ export default function HomeView() {
   };
 
   const loadingprops: ILoading = {
-    text: "Loading ..."
+    text: LOADING
   };
 
   return (
@@ -73,7 +73,7 @@ export default function HomeView() {
           <div className="text-center mt-5">
             <h2>TV Shows App</h2>
             <p>
-              Search about your favorite TV Shows using the search box below!
+              Search for your favorite TV Shows using the search box below!
             </p>
           </div>
         </header>
@@ -91,7 +91,7 @@ export default function HomeView() {
                     type="text"
                     placeholder="Search for your favorite TV Show!"
                     className="form-control home-searchbox"
-                    onChange={(e: any) => handleSearch(e.target.value)}
+                    onChange={(e: any) => {handleSearch(e.target.value); handleError("");}}
                     required
                   />
                 </div>
