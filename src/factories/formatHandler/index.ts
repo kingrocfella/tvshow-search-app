@@ -49,3 +49,5 @@ export const alphabeticDateFormat = (date: Date | string): string => {
 };
 
 export const FormatHTMLString = (sum: string): string => sum.replace(/<\/?[^>]+(>|$)/g, "");
+
+export const HandleNullValues = (res: any): any => res ? res : "-";

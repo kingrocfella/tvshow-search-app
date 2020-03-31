@@ -27,3 +27,26 @@ export interface IAlert {
   type: any;
   text: string;
 }
+
+export interface IState {
+  searchTerm: string;
+  episodesArray: [];
+}
+
+export interface IAction {
+  type: string;
+  data: any;
+}
+
+export interface IEpisodes {
+  id: number;
+  url: string;
+  name: string;
+  season: number;
+  number: number;
+  airdate: string;
+  airtime: string;
+  runtime: number;
+  image: { medium: string; original: string };
+  summary: string;
+}

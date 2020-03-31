@@ -3,25 +3,38 @@ import { ITVShowSearch } from "../interfaces";
 import {
   FlattenArray,
   alphabeticDateFormat,
-  FormatHTMLString
+  FormatHTMLString,
+  HandleNullValues
 } from "../factories/formatHandler";
+import { ROUTES } from "../constants";
+import { useHistory } from "react-router-dom";
 
-export default function tvshowDetails(props: ITVShowSearch): JSX.Element {
+export default function TvshowDetails(props: ITVShowSearch): JSX.Element {
   /**
    * use react context to grab the search term and call the embeded episodes API
    */
+  const history = useHistory();
+
+  const handleNavigation = (route: string) => {
+    history.push(route);
+  };
+
   const _runningcolor =
     props.status.toLowerCase() === "running" ? "green" : "red";
   return (
     <div className="row justify-content-center mt-5">
       <div className="col-md-6">
         <div className="btn-right-align mb-3">
-          <button className="btn btn-info btn-flat" type="button">
+          <button
+            className="btn btn-info btn-flat"
+            type="button"
+            onClick={() => handleNavigation(ROUTES.episodes)}
+          >
             View Episodes
           </button>
         </div>
         <div className="row">
-          <div className="col-md-4">
+          <div className="col-md-4 mb-3">
             <img
               className="img-fluid mx-auto d-block"
               src={props.image.medium}
@@ -34,55 +47,61 @@ export default function tvshowDetails(props: ITVShowSearch): JSX.Element {
                 <tr>
                   <td>Name: </td>
                   <td>
-                    <strong>{props.name}</strong>
+                    <strong>{HandleNullValues(props.name)}</strong>
                   </td>
                 </tr>
                 <tr>
                   <td>Type: </td>
                   <td>
-                    <strong>{props.type}</strong>
+                    <strong>{HandleNullValues(props.type)}</strong>
                   </td>
                 </tr>
                 <tr>
                   <td>Language: </td>
                   <td>
-                    <strong>{props.language}</strong>
+                    <strong>{HandleNullValues(props.language)}</strong>
                   </td>
                 </tr>
                 <tr>
                   <td>Genres: </td>
                   <td>
-                    <strong>{FlattenArray(props.genres)}</strong>
+                    <strong>
+                      {HandleNullValues(FlattenArray(props.genres))}
+                    </strong>
                   </td>
                 </tr>
                 <tr>
                   <td>Status: </td>
                   <td>
                     <strong style={{ color: _runningcolor }}>
-                      {props.status}
+                      {HandleNullValues(props.status)}
                     </strong>
                   </td>
                 </tr>
                 <tr>
                   <td>Runtime: </td>
                   <td>
-                    <strong>
-                      {props.runtime ? `${props.runtime} mins` : "-"}
-                    </strong>
+                    <strong>{HandleNullValues(props.runtime)} mins</strong>
                   </td>
                 </tr>
                 <tr>
                   <td>Premier Time: </td>
                   <td>
-                    <strong>{alphabeticDateFormat(props.premiered)}</strong>
+                    <strong>
+                      {HandleNullValues(alphabeticDateFormat(props.premiered))}
+                    </strong>
                   </td>
                 </tr>
                 <tr>
                   <td>Schedule: </td>
                   <td>
-                    <strong>{`${FlattenArray(props.schedule.days)} ${
-                      props.schedule.time
-                    }`}</strong>
+                    <strong>
+                      {HandleNullValues(
+                        `${FlattenArray(props.schedule.days)} ${
+                          props.schedule.time
+                        }`
+                      )}
+                    </strong>
                   </td>
                 </tr>
                 <tr>
@@ -95,7 +114,7 @@ export default function tvshowDetails(props: ITVShowSearch): JSX.Element {
                         }`
                       }}
                     >
-                      {props.rating.average}
+                      {HandleNullValues(props.rating.average)}
                     </strong>
                   </td>
                 </tr>
@@ -104,7 +123,8 @@ export default function tvshowDetails(props: ITVShowSearch): JSX.Element {
           </div>
         </div>
         <div className="text-justify mt-2">
-          <strong>Summary:</strong> <p>{FormatHTMLString(props.summary)}</p>
+          <strong>Summary:</strong>{" "}
+          <p>{HandleNullValues(FormatHTMLString(props.summary))}</p>
         </div>
       </div>
     </div>

@@ -22,3 +22,10 @@
   background-color: rgb(243, 243, 243);
 }
 
+.episodes-section{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+

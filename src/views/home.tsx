@@ -7,6 +7,9 @@ import "./styles.css";
 import { FormatSearchTerm } from "../factories/formatHandler";
 import { ITVShowSearch, IAPIResponse, ILoading } from "../interfaces";
 import { ErrorHandler } from "../factories/ErrorHandler";
+import { Store } from "../Store";
+import { ACTIONS } from "../actions";
+import { CONSTANTS } from "../constants";
 type FormElem = React.FormEvent<HTMLFormElement>;
 
 const SEARCH = "SEARCH";
@@ -19,6 +22,7 @@ export default function HomeView() {
   >({});
   const [error, handleError] = React.useState<string>("");
   const [loading, handleLoading] = React.useState<string>("");
+  const { dispatch } = React.useContext(Store);
 
   const handleSubmit = (e: FormElem) => {
     e.preventDefault();
@@ -40,7 +44,12 @@ export default function HomeView() {
     APICall(route, method, data)
       .then((res: IAPIResponse) => handleAPIResponse(res.data, resType))
       .catch((err: any) => {
-        handleError(ErrorHandler(err, `No TV Shows with the name '${searchTerm}' was found!`));
+        handleError(
+          ErrorHandler(
+            err,
+            `No TV Show with the name '${searchTerm}' was found!`
+          )
+        );
         handleLoading("");
       });
   };
@@ -51,6 +60,9 @@ export default function HomeView() {
         handleSearchResult(res);
         handleLoading("");
         handleError("");
+        dispatch(
+          ACTIONS({ type: CONSTANTS.REDUX_SET_SEARCHTERM, data: searchTerm })
+        );
         break;
 
       default:
@@ -72,9 +84,7 @@ export default function HomeView() {
         >
           <div className="text-center mt-5">
             <h2>TV Shows App</h2>
-            <p>
-              Search for your favorite TV Shows using the search box below!
-            </p>
+            <p>Search for your favorite TV Shows using the search box below!</p>
           </div>
         </header>
         <section>
@@ -91,7 +101,10 @@ export default function HomeView() {
                     type="text"
                     placeholder="Search for your favorite TV Show!"
                     className="form-control home-searchbox"
-                    onChange={(e: any) => {handleSearch(e.target.value); handleError("");}}
+                    onChange={(e: any) => {
+                      handleSearch(e.target.value);
+                      handleError("");
+                    }}
                     required
                   />
                 </div>
