@@ -13,6 +13,7 @@ import { GetState } from "../PersistState";
 import { ROUTES } from "../constants";
 import SelectDropdown from "../components/SelectDropdown";
 import { NumberArray } from "../factories/formatHandler";
+import { FaFilter } from "react-icons/fa";
 
 const GET_EPISODES = "GET_EPISODES";
 const GET_SEASON_NUMBER = "GET_SEASON_NUMBER";
@@ -23,7 +24,7 @@ export default function EpisodesView(): JSX.Element {
   const { state, dispatch } = React.useContext(Store);
   const [loading, handleLoading] = React.useState<string>("");
   const [error, handleError] = React.useState<string>("");
-  const [selectedSeason, handleSelectedSeason] = React.useState<string>("");
+  const [selectedSeason, handleSelectedSeason] = React.useState<number>(0);
 
   if (
     !persistedState &&
@@ -118,7 +119,13 @@ export default function EpisodesView(): JSX.Element {
     width: "10rem"
   };
 
-  console.log(selectedSeason);
+  const filterResult = () => {
+    if (!selectedSeason) return parameters()!.episodesArray;
+    return parameters()!.episodesArray.filter(
+      (item: IEpisodes) => Number(item.season) === Number(selectedSeason)
+    );
+  };
+
   return (
     <div>
       {error && (
@@ -145,10 +152,13 @@ export default function EpisodesView(): JSX.Element {
             <section className="mb-5">
               <div className="btn-center-align">
                 <SelectDropdown {...selectProps} />
+                <span className="ml-3">
+                  <FaFilter />
+                </span>
               </div>
             </section>
             <section className="episodes-section">
-              {parameters()!.episodesArray.map(
+              {filterResult().map(
                 (item: IEpisodes): JSX.Element => {
                   return <EpisodesBox key={item.id} {...item} />;
                 }
