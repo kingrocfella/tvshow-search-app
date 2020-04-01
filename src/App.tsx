@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import HomeView from "./views/home";
+import HomeView from "./views/homeView";
 import EpisodesView from "./views/episodesView";
 import { ROUTES } from "./constants";
 

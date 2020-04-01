@@ -8,6 +8,7 @@ import {
 } from "../factories/formatHandler";
 import { ROUTES } from "../constants";
 import { useHistory } from "react-router-dom";
+import NotFoundPic from "../assets/img/notfound.png";
 
 export default function TvshowDetails(props: ITVShowSearch): JSX.Element {
   /**
@@ -40,7 +41,13 @@ export default function TvshowDetails(props: ITVShowSearch): JSX.Element {
           <div className="col-md-4 mb-3">
             <img
               className="img-fluid mx-auto d-block"
-              src={props.image.medium}
+              src={
+                props.image
+                  ? props.image.medium
+                    ? props.image.medium
+                    : NotFoundPic
+                  : NotFoundPic
+              }
               alt={`${props.name} poster`}
             />
           </div>
