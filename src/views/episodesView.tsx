@@ -87,13 +87,13 @@ export default function EpisodesView(): JSX.Element {
       case GET_EPISODES:
         handleLoading("");
         handleError("");
-        dispatch(ACTIONS({ type: CONSTANTS.REDUX_SET_EPISODES, data: res }));
+        dispatch(ACTIONS({ type: CONSTANTS.STATE_SET_EPISODES, data: res }));
         GetSeasonNumber(res.id);
         break;
 
       case GET_SEASON_NUMBER:
         dispatch(
-          ACTIONS({ type: CONSTANTS.REDUX_SET_SEASON_NUMBER, data: res.length })
+          ACTIONS({ type: CONSTANTS.STATE_SET_SEASON_NUMBER, data: res.length })
         );
         break;
 

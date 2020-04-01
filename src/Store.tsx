@@ -14,12 +14,12 @@ const Reducer = (state: IState, action: IAction) => {
   const { type, data } = action;
   let newState;
   switch (type) {
-    case CONSTANTS.REDUX_SET_SEARCHTERM:
+    case CONSTANTS.STATE_SET_SEARCHTERM:
       newState = { ...state, searchTerm: data, episodesArray: [] };
       PersistState(newState);
       return newState;
 
-    case CONSTANTS.REDUX_SET_EPISODES:
+    case CONSTANTS.STATE_SET_EPISODES:
       newState = {
         ...state,
         searchTerm: data.name,
@@ -28,7 +28,7 @@ const Reducer = (state: IState, action: IAction) => {
       PersistState(newState);
       return newState;
 
-    case CONSTANTS.REDUX_SET_SEASON_NUMBER:
+    case CONSTANTS.STATE_SET_SEASON_NUMBER:
       newState = { ...state, seasonNumber: data };
       PersistState(newState);
       return newState;

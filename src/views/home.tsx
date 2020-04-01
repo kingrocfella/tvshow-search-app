@@ -61,7 +61,7 @@ export default function HomeView() {
         handleLoading("");
         handleError("");
         dispatch(
-          ACTIONS({ type: CONSTANTS.REDUX_SET_SEARCHTERM, data: searchTerm })
+          ACTIONS({ type: CONSTANTS.STATE_SET_SEARCHTERM, data: searchTerm })
         );
         break;
 
