@@ -17,13 +17,14 @@ export default function TvshowDetails(props: ITVShowSearch): JSX.Element {
    */
   const history = useHistory();
 
-  const handleNavigation = (route: string) => {
+  const handleNavigation = (route: string): void => {
     history.push(route);
   };
 
-  const disabled = String(props.status).toLowerCase() === "in development";
+  const disabled: boolean =
+    String(props.status).toLowerCase() === "in development";
 
-  const _runningcolor =
+  const _runningcolor: string =
     props.status.toLowerCase() === "running" ? "green" : "red";
   return (
     <div className="row justify-content-center mt-5">

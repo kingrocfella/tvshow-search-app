@@ -15,10 +15,10 @@ import SelectDropdown from "../components/SelectDropdown";
 import { NumberArray } from "../factories/formatHandler";
 import { FaFilter } from "react-icons/fa";
 
-const GET_EPISODES = "GET_EPISODES";
-const GET_SEASON_NUMBER = "GET_SEASON_NUMBER";
-const LOADING = "Loading ...";
-const persistedState = GetState();
+const GET_EPISODES: string = "GET_EPISODES";
+const GET_SEASON_NUMBER: string = "GET_SEASON_NUMBER";
+const LOADING: string = "Loading ...";
+const persistedState: any = GetState();
 
 export default function EpisodesView(): JSX.Element {
   const { state, dispatch } = React.useContext(Store);
@@ -37,7 +37,7 @@ export default function EpisodesView(): JSX.Element {
     if (state.episodesArray.length === 0 && state.searchTerm) GetEpisodes();
   });
 
-  const parameters = () => {
+  const parameters = (): any => {
     try {
       return {
         seasonNumber: state.seasonNumber
@@ -56,7 +56,7 @@ export default function EpisodesView(): JSX.Element {
     }
   };
 
-  const GetEpisodes = () => {
+  const GetEpisodes = (): void => {
     handleLoading(LOADING);
     handleAPICall(
       GET_EPISODES,
@@ -65,7 +65,7 @@ export default function EpisodesView(): JSX.Element {
     );
   };
 
-  const GetSeasonNumber = (id: number) => {
+  const GetSeasonNumber = (id: number): void => {
     handleAPICall(GET_SEASON_NUMBER, apiroutes.getSeasonsById(id), "get");
   };
 
@@ -74,7 +74,7 @@ export default function EpisodesView(): JSX.Element {
     route: string,
     method: string,
     data: object = {}
-  ) => {
+  ): void => {
     APICall(route, method, data)
       .then((res: IAPIResponse) => handleAPIResponse(res.data, resType))
       .catch((err: any) => {
@@ -83,7 +83,7 @@ export default function EpisodesView(): JSX.Element {
       });
   };
 
-  const handleAPIResponse = (res: any, type: string) => {
+  const handleAPIResponse = (res: any, type: string): void => {
     switch (type) {
       case GET_EPISODES:
         handleLoading("");
@@ -107,7 +107,7 @@ export default function EpisodesView(): JSX.Element {
     text: LOADING
   };
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: any): void => {
     handleSelectedSeason(e.target.value);
   };
 
@@ -119,7 +119,7 @@ export default function EpisodesView(): JSX.Element {
     width: "10rem"
   };
 
-  const filterResult = () => {
+  const filterResult = (): Array<IEpisodes> => {
     if (!selectedSeason) return parameters()!.episodesArray;
     return parameters()!.episodesArray.filter(
       (item: IEpisodes) => Number(item.season) === Number(selectedSeason)

@@ -52,18 +52,23 @@ export interface IEpisodes {
   summary: string;
 }
 
-export interface IModal{
+export interface IModal {
   show: boolean;
   handleClose: any;
   body: JSX.Element;
-  footer: JSX.Element,
+  footer: JSX.Element;
   title: string;
 }
 
-export interface ISelect{
+export interface ISelect {
   data: Array<any>;
   handleChange: any;
   disabled: boolean;
   defaultValue: string | number;
   width: string;
+}
+
+export interface IDatalist {
+  id: string;
+  data: Array<any>;
 }

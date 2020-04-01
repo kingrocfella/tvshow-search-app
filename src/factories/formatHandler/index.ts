@@ -34,8 +34,8 @@ export const alphabeticDateFormat = (
     "Dec"
   ];
   var day: NumString = date.getDate();
-  var monthIndex = date.getMonth();
-  var year = date.getFullYear();
+  var monthIndex: number = date.getMonth();
+  var year: number = date.getFullYear();
   var hours: NumString = date.getHours();
   var mins: NumString = date.getMinutes();
   var secs: NumString = date.getSeconds();
@@ -50,13 +50,15 @@ export const alphabeticDateFormat = (
     : `${day} ${monthNames[monthIndex]}. ${year}`;
 };
 
-export const FormatHTMLString = (sum: string): string => 
-  sum.replace(/<\/?[^>]+(>|$)/g, "");
+export const FormatHTMLString = (sum: string): string => {
+  if (!sum) return "";
+  return sum.replace(/<\/?[^>]+(>|$)/g, "");
+};
 
 export const HandleNullValues = (res: any): any => (res ? res : "-");
 
 export const NumberArray = (max: number): Array<number> => {
-  let res = [];
+  let res: Array<number> = [];
   for (let index = 1; index <= max; index++) {
     res.push(index);
   }
@@ -64,3 +66,13 @@ export const NumberArray = (max: number): Array<number> => {
 };
 
 export const HTTPS = (url: string): string => url.replace("http", "https");
+
+export const ConvertToArray = (arr: []): Array<any> => {
+  if (arr.length === 0) return [];
+  let res: any = [];
+  const slice = arr.slice(0,7);
+  slice.forEach((item: any) => {
+    res.push(item.show.name);
+  });
+  return res;
+};
