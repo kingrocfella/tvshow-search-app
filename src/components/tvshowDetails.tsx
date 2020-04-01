@@ -4,7 +4,8 @@ import {
   FlattenArray,
   alphabeticDateFormat,
   FormatHTMLString,
-  HandleNullValues
+  HandleNullValues,
+  HTTPS
 } from "../factories/formatHandler";
 import { ROUTES } from "../constants";
 import { useHistory } from "react-router-dom";
@@ -44,7 +45,7 @@ export default function TvshowDetails(props: ITVShowSearch): JSX.Element {
               src={
                 props.image
                   ? props.image.medium
-                    ? props.image.medium
+                    ? HTTPS(props.image.medium)
                     : NotFoundPic
                   : NotFoundPic
               }

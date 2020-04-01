@@ -62,3 +62,5 @@ export const NumberArray = (max: number): Array<number> => {
   }
   return res;
 };
+
+export const HTTPS = (url: string): string => url.replace("http", "https");

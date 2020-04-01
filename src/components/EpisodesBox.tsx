@@ -4,7 +4,8 @@ import { IEpisodes, IModal } from "../interfaces";
 import "./styles.css";
 import {
   alphabeticDateFormat,
-  FormatHTMLString
+  FormatHTMLString,
+  HTTPS
 } from "../factories/formatHandler";
 import Modal from "./Modal";
 
@@ -48,7 +49,7 @@ export default function TvShowEpisodes(props: IEpisodes): JSX.Element {
           src={
             props.image
               ? props.image.medium
-                ? props.image.medium
+                ? HTTPS(props.image.medium)
                 : NotFoundPic
               : NotFoundPic
           }
