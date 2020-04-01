@@ -31,6 +31,7 @@ export interface IAlert {
 export interface IState {
   searchTerm: string;
   episodesArray: [];
+  seasonNumber: number;
 }
 
 export interface IAction {
@@ -49,4 +50,20 @@ export interface IEpisodes {
   runtime: number;
   image: { medium: string; original: string };
   summary: string;
+}
+
+export interface IModal{
+  show: boolean;
+  handleClose: any;
+  body: JSX.Element;
+  footer: JSX.Element,
+  title: string;
+}
+
+export interface ISelect{
+  data: Array<any>;
+  handleChange: any;
+  disabled: boolean;
+  defaultValue: string | number;
+  width: string;
 }

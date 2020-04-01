@@ -19,6 +19,8 @@ export default function TvshowDetails(props: ITVShowSearch): JSX.Element {
     history.push(route);
   };
 
+  const disabled = String(props.status).toLowerCase() === "in development";
+
   const _runningcolor =
     props.status.toLowerCase() === "running" ? "green" : "red";
   return (
@@ -29,6 +31,7 @@ export default function TvshowDetails(props: ITVShowSearch): JSX.Element {
             className="btn btn-info btn-flat"
             type="button"
             onClick={() => handleNavigation(ROUTES.episodes)}
+            disabled={disabled}
           >
             View Episodes
           </button>
@@ -85,7 +88,7 @@ export default function TvshowDetails(props: ITVShowSearch): JSX.Element {
                   </td>
                 </tr>
                 <tr>
-                  <td>Premier Time: </td>
+                  <td>Premier Date: </td>
                   <td>
                     <strong>
                       {HandleNullValues(alphabeticDateFormat(props.premiered))}

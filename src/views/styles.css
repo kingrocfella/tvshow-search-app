@@ -18,6 +18,12 @@
   margin-top: 1rem;
 }
 
+.loading{
+  position: absolute;
+  top: 40%;
+  left: 45%;
+}
+
 .home-search-btn{
   background-color: rgb(243, 243, 243);
 }
@@ -25,7 +31,16 @@
 .episodes-section{
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-wrap: wrap;
 }
+
+.episodes-seasons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20rem;
+}
+
+
 

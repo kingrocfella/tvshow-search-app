@@ -13,7 +13,10 @@ export const FlattenArray = (arr: []): string | [] => {
   return res;
 };
 
-export const alphabeticDateFormat = (date: Date | string): string => {
+export const alphabeticDateFormat = (
+  date: Date | string,
+  time: boolean = false
+): string => {
   if (!date) return "";
   date = new Date(date);
   const monthNames = [
@@ -42,12 +45,20 @@ export const alphabeticDateFormat = (date: Date | string): string => {
   if (mins < 10) mins = `0${mins}`;
   if (secs < 10) secs = `0${secs}`;
 
-  //CHECK IF DATE HAS TIME
-  if (hours === "00" && mins === "00" && secs === "00")
-    return `${day} ${monthNames[monthIndex]}. ${year}`;
-  return `${day} ${monthNames[monthIndex]}. ${year} ${hours}:${mins}:${secs}`;
+  return time
+    ? `${day} ${monthNames[monthIndex]}. ${year} ${hours}:${mins}:${secs}`
+    : `${day} ${monthNames[monthIndex]}. ${year}`;
 };
 
-export const FormatHTMLString = (sum: string): string => sum.replace(/<\/?[^>]+(>|$)/g, "");
+export const FormatHTMLString = (sum: string): string =>
+  sum.replace(/<\/?[^>]+(>|$)/g, "");
 
-export const HandleNullValues = (res: any): any => res ? res : "-";
+export const HandleNullValues = (res: any): any => (res ? res : "-");
+
+export const NumberArray = (max: number): Array<number> => {
+  let res = [];
+  for (let index = 1; index <= max; index++) {
+    res.push(index);
+  }
+  return res;
+};

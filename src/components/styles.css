@@ -1,3 +1,77 @@
-.episode-box{
-  
+.episode-box {
+  margin: 1rem;
+  width: 18rem;
+  box-shadow: 5px 10px 18px #888888;
+}
+
+.episodes-text {
+  font-size: 0.9rem;
+}
+
+select {
+  border: 1px solid green !important;
+  border-radius: 0px !important;
+}
+
+select:focus {
+  border: 1px solid green !important;
+  box-shadow: 0 0 0 0.2rem rgba(1, 202, 92, 0.25) !important;
+}
+
+/* Modal CSS 
+
+*/
+
+.modal-dialog-scrollable .modal-body {
+  overflow-y: auto;
+  margin-right: 20px;
+}
+
+.modal-title {
+  font-size: 20px;
+}
+
+.modal-footer > .btn-secondary {
+  background-color: #dadada;
+  color: #000000;
+  border: none;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  border: none;
+}
+
+.modal-header {
+  border: none !important;
+}
+/* width */
+.modal-body::-webkit-scrollbar {
+  width: 9px;
+  margin-right: 10px;
+}
+
+/* Track */
+.modal-body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 10px #dadada;
+  border-radius: 10px;
+}
+
+/* Handle */
+.modal-body::-webkit-scrollbar-thumb {
+  background: black;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.modal-body::-webkit-scrollbar-thumb:hover {
+  background: grey;
+}
+
+/* for Firefox */
+.modal-body {
+  overflow-y: scroll;
+  scrollbar-color: #000000 #dadada;
+  scrollbar-width: thin;
 }
