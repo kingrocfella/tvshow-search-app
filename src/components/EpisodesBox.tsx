@@ -5,7 +5,8 @@ import "./styles.css";
 import {
   alphabeticDateFormat,
   FormatHTMLString,
-  HTTPS
+  HTTPS,
+  HandleNullValues
 } from "../factories/formatHandler";
 import Modal from "./Modal";
 
@@ -18,7 +19,7 @@ export default function TvShowEpisodes(props: IEpisodes): JSX.Element {
 
   const ModalBody: JSX.Element = (
     <div className="text-justify">
-      <p>{FormatHTMLString(props.summary)}</p>
+      <p>{FormatHTMLString(HandleNullValues(props.summary))}</p>
     </div>
   );
 
@@ -39,6 +40,8 @@ export default function TvShowEpisodes(props: IEpisodes): JSX.Element {
     body: ModalBody,
     footer: ModalFooter
   };
+
+  const disabled: boolean = !props.summary ? true : false;
 
   return (
     <>
@@ -85,6 +88,7 @@ export default function TvShowEpisodes(props: IEpisodes): JSX.Element {
                   className="btn btn-outline-success btn-flat"
                   type="button"
                   onClick={() => handleModalShow(true)}
+                  disabled={disabled}
                 >
                   Show Summary
                 </button>
