@@ -52,7 +52,7 @@ export default function EpisodesView(): JSX.Element {
             : persistedState.episodesArray
       };
     } catch (error) {
-      window.location.reload(true);
+      window.location.href = `${window.location.origin}${ROUTES.home}`;
     }
   };
 
