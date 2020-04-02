@@ -17,7 +17,7 @@ export const alphabeticDateFormat = (
   date: Date | string,
   time: boolean = false
 ): string => {
-  if (!date) return "";
+  if (!date) return "-";
   date = new Date(date);
   const monthNames = [
     "Jan",

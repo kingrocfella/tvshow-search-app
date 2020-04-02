@@ -32,6 +32,8 @@ export interface IState {
   searchTerm: string;
   episodesArray: [];
   seasonNumber: number;
+  movieID: number;
+  movieCast: [];
 }
 
 export interface IAction {
@@ -71,4 +73,45 @@ export interface ISelect {
 export interface IDatalist {
   id: string;
   data: Array<any>;
+}
+
+export interface ICast {
+  person: {
+    id: number;
+    url: string;
+    name: string;
+    country: {
+      name: string;
+      code: string;
+      timezone: string;
+    };
+    birthday: string;
+    deathday: string;
+    gender: string;
+    image: {
+      medium: string;
+      original: string;
+    };
+    _links: {
+      self: {
+        href: string;
+      };
+    };
+  };
+  character: {
+    id: number;
+    url: string;
+    name: string;
+    image: {
+      medium: string;
+      original: string;
+    };
+    _links: {
+      self: {
+        href: string;
+      };
+    };
+  };
+  self: boolean;
+  voice: boolean;
 }

@@ -6,32 +6,38 @@ import { PersistState } from "./PersistState";
 const initState: IState = {
   searchTerm: "",
   episodesArray: [],
-  seasonNumber: 0
+  seasonNumber: 0,
+  movieID: 0,
+  movieCast: []
 };
 export const Store = React.createContext<IState | any>(initState);
 
 const Reducer = (state: IState, action: IAction) => {
   const { type, data } = action;
-  let newState;
   switch (type) {
     case CONSTANTS.STATE_SET_SEARCHTERM:
-      newState = { ...state, searchTerm: data, episodesArray: [] };
-      PersistState(newState);
-      return newState;
+      return PersistState({
+        ...state,
+        searchTerm: data,
+        episodesArray: [],
+        movieCast: []
+      });
 
     case CONSTANTS.STATE_SET_EPISODES:
-      newState = {
+      return PersistState({
         ...state,
         searchTerm: data.name,
         episodesArray: data._embedded.episodes
-      };
-      PersistState(newState);
-      return newState;
+      });
 
     case CONSTANTS.STATE_SET_SEASON_NUMBER:
-      newState = { ...state, seasonNumber: data };
-      PersistState(newState);
-      return newState;
+      return PersistState({ ...state, seasonNumber: data });
+
+    case CONSTANTS.STATE_SET_MOVIE_ID:
+      return PersistState({ ...state, movieID: data });
+
+    case CONSTANTS.STATE_SET_MOVIE_CAST:
+      return PersistState({ ...state, movieCast: data._embedded.cast });
 
     default:
       return { ...state };

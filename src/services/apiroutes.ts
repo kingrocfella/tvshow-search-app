@@ -10,5 +10,8 @@ export default {
   },
   getEpisodes(tvshow: string): string {
     return `/singlesearch/shows?q=${tvshow}&embed=episodes`;
+  },
+  GetMovieCast(id: number): string {
+    return `/shows/${id}?embed=cast`;
   }
 };

@@ -12,9 +12,7 @@ import { useHistory } from "react-router-dom";
 import NotFoundPic from "../assets/img/notfound.png";
 
 export default function TvshowDetails(props: ITVShowSearch): JSX.Element {
-  /**
-   * use react context to grab the search term and call the embeded episodes API
-   */
+
   const history = useHistory();
 
   const handleNavigation = (route: string): void => {
@@ -37,6 +35,14 @@ export default function TvshowDetails(props: ITVShowSearch): JSX.Element {
             disabled={disabled}
           >
             View Episodes
+          </button>
+          <button
+            className="btn btn-danger btn-flat ml-2"
+            type="button"
+            onClick={() => handleNavigation(ROUTES.casts)}
+            disabled={disabled}
+          >
+            View Cast
           </button>
         </div>
         <div className="row">

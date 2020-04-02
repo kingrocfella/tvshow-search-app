@@ -45,10 +45,12 @@ export default function HomeView(): JSX.Element {
   };
 
   const handleAutoSuggestions = () => {
-    if (!searchTerm) return;
+    const trimWhiteSpaces = searchTerm.trim();
+    if (!trimWhiteSpaces) return;
+    const trimDashes = trimWhiteSpaces.replace(/-/g, "");
     handleAPICall(
       AUTOSUGGESTIONS,
-      apiroutes.searchSuggestions(FormatSearchTerm(searchTerm)),
+      apiroutes.searchSuggestions(FormatSearchTerm(trimDashes)),
       "get"
     );
   };
@@ -81,6 +83,7 @@ export default function HomeView(): JSX.Element {
         dispatch(
           ACTIONS({ type: CONSTANTS.STATE_SET_SEARCHTERM, data: searchTerm })
         );
+        dispatch(ACTIONS({ type: CONSTANTS.STATE_SET_MOVIE_ID, data: res.id }));
         break;
 
       case AUTOSUGGESTIONS:

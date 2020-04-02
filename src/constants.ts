@@ -7,9 +7,12 @@ export const CONSTANTS = {
    STATE_SET_SEARCHTERM: "SET_SEARCHTERM",
    STATE_SET_EPISODES: "SET_EPISODES",
    STATE_SET_SEASON_NUMBER: "SET_SEASON_NUMBER",
+   STATE_SET_MOVIE_ID: "SET_MOVIE_ID",
+   STATE_SET_MOVIE_CAST: "SET_MOVIE_CAST",
 }
 
 export const ROUTES = {
   home: "/",
-  episodes: "/episodes/view"
+  episodes: "/episodes/view",
+  casts: "/movie/cast"
 }

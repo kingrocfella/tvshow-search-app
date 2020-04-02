@@ -90,7 +90,7 @@ export default function TvShowEpisodes(props: IEpisodes): JSX.Element {
                   onClick={() => handleModalShow(true)}
                   disabled={disabled}
                 >
-                  Show Summary
+                  Episode Summary
                 </button>
               </div>
             </section>
