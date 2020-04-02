@@ -25,11 +25,11 @@ export default function TvshowDetails(props: ITVShowSearch): JSX.Element {
   const _runningcolor: string =
     props.status.toLowerCase() === "running" ? "green" : "red";
   return (
-    <div className="row justify-content-center mt-5">
+    <div className="row justify-content-center mt-5 home-search-detail">
       <div className="col-md-6">
         <div className="btn-right-align mb-3">
           <button
-            className="btn btn-info btn-flat"
+            className="btn btn-info btn-flat test-home-btn1"
             type="button"
             onClick={() => handleNavigation(ROUTES.episodes)}
             disabled={disabled}
@@ -37,7 +37,7 @@ export default function TvshowDetails(props: ITVShowSearch): JSX.Element {
             View Episodes
           </button>
           <button
-            className="btn btn-danger btn-flat ml-2"
+            className="btn btn-danger btn-flat ml-2 test-home-btn2"
             type="button"
             onClick={() => handleNavigation(ROUTES.casts)}
             disabled={disabled}
@@ -48,7 +48,7 @@ export default function TvshowDetails(props: ITVShowSearch): JSX.Element {
         <div className="row">
           <div className="col-md-4 mb-3">
             <img
-              className="img-fluid mx-auto d-block"
+              className="img-fluid mx-auto d-block test-home-img"
               src={
                 props.image
                   ? props.image.medium

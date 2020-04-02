@@ -26,17 +26,6 @@ export default function EpisodesView(): JSX.Element {
   const [error, handleError] = React.useState<string>("");
   const [selectedSeason, handleSelectedSeason] = React.useState<number>(0);
 
-  if (
-    !persistedState &&
-    (!state.searchTerm || state.episodesArray.length === 0)
-  ) {
-    window.location.href = `${window.location.origin}${ROUTES.home}`;
-  }
-
-  React.useEffect(() => {
-    if (state.episodesArray.length === 0 && state.searchTerm) GetEpisodes();
-  });
-
   const parameters = (): any => {
     try {
       return {
@@ -55,6 +44,19 @@ export default function EpisodesView(): JSX.Element {
       window.location.href = `${window.location.origin}${ROUTES.home}`;
     }
   };
+
+  if (
+    !persistedState &&
+    (!parameters()!.searchTerm || parameters()!.episodesArray.length === 0)
+  ) {
+    window.location.href = `${window.location.origin}${ROUTES.home}`;
+  }
+
+  React.useEffect(() => {
+    if (parameters()!.episodesArray.length === 0 && !error) GetEpisodes();
+  });
+
+
 
   const GetEpisodes = (): void => {
     handleLoading(LOADING);
@@ -143,14 +145,14 @@ export default function EpisodesView(): JSX.Element {
           <section className="container-fluid mt-5 mb-5">
             <header className="text-center mt-4 mb-5">
               {
-                <h3>
+                <h3 className="test-episodes-header">
                   {parameters()!.searchTerm}
                   's Episodes
                 </h3>
               }
             </header>
             <section className="mb-5">
-              <div className="btn-center-align">
+              <div className="btn-center-align test-episodes-filter">
                 <SelectDropdown {...selectProps} />
                 <span className="ml-3">
                   <FaFilter />

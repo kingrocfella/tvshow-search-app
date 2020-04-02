@@ -11,9 +11,9 @@ import { ICast } from "../interfaces";
 export default function CastBox(props: ICast): JSX.Element {
   return (
     <>
-      <div className="card episode-box">
+      <div className="card episode-box test-cast-card">
         <img
-          className="img-fluid card-img-top"
+          className="img-fluid card-img-top test-cast-card-img"
           style={{ height: "16rem" }}
           src={
             props.person.image
@@ -26,7 +26,7 @@ export default function CastBox(props: ICast): JSX.Element {
         />
         <div className="card-body">
           <div className="card-text">
-            <section className="episodes-text">
+            <section className="episodes-text test-cast-card-text">
               <div className="text-center">
                 <strong>{HandleNullValues(props.person.name)}</strong>
               </div>

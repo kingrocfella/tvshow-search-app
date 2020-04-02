@@ -46,9 +46,9 @@ export default function TvShowEpisodes(props: IEpisodes): JSX.Element {
   return (
     <>
       <Modal {...payload} />
-      <div className="card episode-box">
+      <div className="card episode-box test-episodebox-card">
         <img
-          className="img-fluid card-img-top"
+          className="img-fluid card-img-top test-episodebox-card-img"
           src={
             props.image
               ? props.image.medium
@@ -60,7 +60,7 @@ export default function TvShowEpisodes(props: IEpisodes): JSX.Element {
         />
         <div className="card-body">
           <div className="card-text">
-            <section className="episodes-text">
+            <section className="episodes-text test-episodebox-card-text">
               <div className="text-center">
                 <strong>{props.name}</strong>
               </div>
@@ -85,7 +85,7 @@ export default function TvShowEpisodes(props: IEpisodes): JSX.Element {
               </table>
               <div className="text-center mt-3">
                 <button
-                  className="btn btn-outline-success btn-flat"
+                  className="btn btn-outline-success btn-flat test-episodebox-summary-btn"
                   type="button"
                   onClick={() => handleModalShow(true)}
                   disabled={disabled}

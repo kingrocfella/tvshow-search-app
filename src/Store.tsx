@@ -37,7 +37,11 @@ const Reducer = (state: IState, action: IAction) => {
       return PersistState({ ...state, movieID: data });
 
     case CONSTANTS.STATE_SET_MOVIE_CAST:
-      return PersistState({ ...state, movieCast: data._embedded.cast });
+      return PersistState({
+        ...state,
+        searchTerm: data.name,
+        movieCast: data._embedded.cast
+      });
 
     default:
       return { ...state };

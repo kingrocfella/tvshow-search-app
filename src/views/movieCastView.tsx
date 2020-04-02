@@ -21,15 +21,6 @@ export default function MovieCastView(): JSX.Element {
   const [loading, handleLoading] = React.useState<string>("");
   const [error, handleError] = React.useState<string>("");
 
-  if (!persistedState && (!state.searchTerm || !state.movieID)) {
-    window.location.href = `${window.location.origin}${ROUTES.home}`;
-  }
-
-  React.useEffect(() => {
-    if (parameters()!.movieCast.length === 0 && !error)
-      GetMovieCast();
-  });
-
   const parameters = (): any => {
     try {
       return {
@@ -46,6 +37,17 @@ export default function MovieCastView(): JSX.Element {
       window.location.href = `${window.location.origin}${ROUTES.home}`;
     }
   };
+
+  if (
+    !persistedState &&
+    (!parameters()!.searchTerm || !parameters()!.movieID)
+  ) {
+    window.location.href = `${window.location.origin}${ROUTES.home}`;
+  }
+
+  React.useEffect(() => {
+    if (parameters()!.movieCast.length === 0 && !error) GetMovieCast();
+  });
 
   const GetMovieCast = (): void => {
     handleLoading(LOADING);
@@ -104,7 +106,7 @@ export default function MovieCastView(): JSX.Element {
           <section className="container-fluid mt-5 mb-5">
             <header className="text-center mt-4 mb-5">
               {
-                <h3>
+                <h3 className="test-cast-header">
                   {parameters()!.searchTerm}
                   's Cast
                 </h3>
