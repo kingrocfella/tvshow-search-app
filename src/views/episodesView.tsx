@@ -14,6 +14,7 @@ import { ROUTES } from "../constants";
 import SelectDropdown from "../components/SelectDropdown";
 import { NumberArray } from "../factories/formatHandler";
 import { FaFilter } from "react-icons/fa";
+import Navbar from "../components/navbar";
 
 const GET_EPISODES: string = "GET_EPISODES";
 const GET_SEASON_NUMBER: string = "GET_SEASON_NUMBER";
@@ -142,6 +143,7 @@ export default function EpisodesView(): JSX.Element {
       )}
       {!loading && (
         <>
+          <Navbar />
           <section className="container-fluid mt-5 mb-5">
             <header className="text-center mt-4 mb-5">
               {

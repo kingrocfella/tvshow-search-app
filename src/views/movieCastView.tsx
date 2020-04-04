@@ -11,6 +11,7 @@ import { CONSTANTS } from "../constants";
 import "./styles.css";
 import { GetState } from "../PersistState";
 import { ROUTES } from "../constants";
+import Navbar from "../components/navbar";
 
 const GET_CAST: string = "GET_CAST";
 const LOADING: string = "Loading ...";
@@ -103,6 +104,7 @@ export default function MovieCastView(): JSX.Element {
       )}
       {!loading && (
         <>
+          <Navbar />
           <section className="container-fluid mt-5 mb-5">
             <header className="text-center mt-4 mb-5">
               {

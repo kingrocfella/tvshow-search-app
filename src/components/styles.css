@@ -75,3 +75,8 @@ select:focus {
   scrollbar-color: #000000 #dadada;
   scrollbar-width: thin;
 }
+
+.app-navbar{
+  background-color: rgb(236, 236, 236);
+  box-shadow: 5px 10px 18px #d6d6d6;
+}
