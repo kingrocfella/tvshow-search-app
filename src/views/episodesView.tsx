@@ -19,13 +19,13 @@ import Navbar from "../components/navbar";
 const GET_EPISODES: string = "GET_EPISODES";
 const GET_SEASON_NUMBER: string = "GET_SEASON_NUMBER";
 const LOADING: string = "Loading ...";
-const persistedState: any = GetState();
 
 export default function EpisodesView(): JSX.Element {
   const { state, dispatch } = React.useContext(Store);
   const [loading, handleLoading] = React.useState<string>("");
   const [error, handleError] = React.useState<string>("");
   const [selectedSeason, handleSelectedSeason] = React.useState<number>(0);
+  const persistedState: any = GetState();
 
   const parameters = (): any => {
     try {
@@ -54,8 +54,7 @@ export default function EpisodesView(): JSX.Element {
   }
 
   React.useEffect(() => {
-    console.log(parameters()!.episodesArray, parameters())
-    if (parameters()!.episodesArray.length === 0 && !error) GetEpisodes();
+    if (persistedState.episodesArray.length === 0 && !error) GetEpisodes();
   });
 
 

@@ -15,12 +15,13 @@ import Navbar from "../components/navbar";
 
 const GET_CAST: string = "GET_CAST";
 const LOADING: string = "Loading ...";
-const persistedState: any = GetState();
+
 
 export default function MovieCastView(): JSX.Element {
   const { state, dispatch } = React.useContext(Store);
   const [loading, handleLoading] = React.useState<string>("");
   const [error, handleError] = React.useState<string>("");
+  const persistedState: any = GetState();
 
   const parameters = (): any => {
     try {
@@ -47,8 +48,7 @@ export default function MovieCastView(): JSX.Element {
   }
 
   React.useEffect(() => {
-    console.log(parameters()!.movieCast, parameters())
-    if (parameters()!.movieCast.length === 0 && !error) GetMovieCast();
+    if (persistedState.movieCast.length === 0 && !error) GetMovieCast();
   });
 
   const GetMovieCast = (): void => {

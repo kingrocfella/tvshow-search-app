@@ -25,7 +25,7 @@ const Reducer = (state: IState, action: IAction) => {
         episodesArray: [],
         movieCast: [],
         seasonNumber: 0,
-        movieID: 0
+        movieID: 0,
       });
 
     case CONSTANTS.STATE_SET_EPISODES:
@@ -33,7 +33,7 @@ const Reducer = (state: IState, action: IAction) => {
         ...state,
         searchTerm: data.name,
         episodesArray: data._embedded.episodes,
-        movieCast: [],
+        movieCast: []
       });
 
     case CONSTANTS.STATE_SET_SEASON_NUMBER:
@@ -47,7 +47,7 @@ const Reducer = (state: IState, action: IAction) => {
         ...state,
         searchTerm: data.name,
         movieCast: data._embedded.cast,
-        episodesArray: [],
+        episodesArray: []
       });
 
     default:
