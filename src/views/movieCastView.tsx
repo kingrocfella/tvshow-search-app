@@ -47,6 +47,7 @@ export default function MovieCastView(): JSX.Element {
   }
 
   React.useEffect(() => {
+    console.log(parameters()!.movieCast, parameters())
     if (parameters()!.movieCast.length === 0 && !error) GetMovieCast();
   });
 

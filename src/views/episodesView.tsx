@@ -54,6 +54,7 @@ export default function EpisodesView(): JSX.Element {
   }
 
   React.useEffect(() => {
+    console.log(parameters()!.episodesArray, parameters())
     if (parameters()!.episodesArray.length === 0 && !error) GetEpisodes();
   });
 

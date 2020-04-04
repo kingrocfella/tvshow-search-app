@@ -8,26 +8,32 @@ const initState: IState = {
   episodesArray: [],
   seasonNumber: 0,
   movieID: 0,
-  movieCast: []
+  movieCast: [],
 };
 export const Store = React.createContext<IState | any>(initState);
 
 const Reducer = (state: IState, action: IAction) => {
   const { type, data } = action;
   switch (type) {
+    case CONSTANTS.STATE_CLEAR_STATE:
+      state = initState;
+      return initState;
+
     case CONSTANTS.STATE_SET_SEARCHTERM:
       return PersistState({
-        ...state,
         searchTerm: data,
         episodesArray: [],
-        movieCast: []
+        movieCast: [],
+        seasonNumber: 0,
+        movieID: 0
       });
 
     case CONSTANTS.STATE_SET_EPISODES:
       return PersistState({
         ...state,
         searchTerm: data.name,
-        episodesArray: data._embedded.episodes
+        episodesArray: data._embedded.episodes,
+        movieCast: [],
       });
 
     case CONSTANTS.STATE_SET_SEASON_NUMBER:
@@ -40,7 +46,8 @@ const Reducer = (state: IState, action: IAction) => {
       return PersistState({
         ...state,
         searchTerm: data.name,
-        movieCast: data._embedded.cast
+        movieCast: data._embedded.cast,
+        episodesArray: [],
       });
 
     default:

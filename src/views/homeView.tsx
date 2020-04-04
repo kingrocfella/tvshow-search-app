@@ -9,7 +9,7 @@ import {
   ITVShowSearch,
   IAPIResponse,
   ILoading,
-  IDatalist
+  IDatalist,
 } from "../interfaces";
 import { ErrorHandler } from "../factories/ErrorHandler";
 import { Store } from "../Store";
@@ -77,6 +77,7 @@ export default function HomeView(): JSX.Element {
   const handleAPIResponse = (res: any, type: string): void => {
     switch (type) {
       case SEARCH:
+        dispatch(ACTIONS({ type: CONSTANTS.STATE_CLEAR_STATE, data: [] }));
         handleSearchResult(res);
         handleLoading("");
         handleError("");
@@ -97,11 +98,11 @@ export default function HomeView(): JSX.Element {
 
   const DataListProps: IDatalist = {
     id: "searchSuggestions",
-    data: suggestions
+    data: suggestions,
   };
 
   const loadingprops: ILoading = {
-    text: LOADING
+    text: LOADING,
   };
 
   const disabled: boolean = !searchTerm ? true : false;
