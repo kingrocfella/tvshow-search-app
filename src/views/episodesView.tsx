@@ -39,7 +39,7 @@ export default function EpisodesView(): JSX.Element {
         episodesArray:
           state.episodesArray.length > 0
             ? state.episodesArray
-            : persistedState.episodesArray
+            : persistedState.episodesArray,
       };
     } catch (error) {
       window.location.href = `${window.location.origin}${ROUTES.home}`;
@@ -56,8 +56,6 @@ export default function EpisodesView(): JSX.Element {
   React.useEffect(() => {
     if (persistedState.episodesArray.length === 0 && !error) GetEpisodes();
   });
-
-
 
   const GetEpisodes = (): void => {
     handleLoading(LOADING);
@@ -91,6 +89,7 @@ export default function EpisodesView(): JSX.Element {
       case GET_EPISODES:
         handleLoading("");
         handleError("");
+        dispatch(ACTIONS({ type: CONSTANTS.STATE_SET_MOVIE_ID, data: res.id }));
         dispatch(ACTIONS({ type: CONSTANTS.STATE_SET_EPISODES, data: res }));
         GetSeasonNumber(res.id);
         break;
@@ -107,7 +106,7 @@ export default function EpisodesView(): JSX.Element {
   };
 
   const loadingprops: ILoading = {
-    text: LOADING
+    text: LOADING,
   };
 
   const handleChange = (e: any): void => {
@@ -119,7 +118,7 @@ export default function EpisodesView(): JSX.Element {
     handleChange,
     defaultValue: "All Seasons",
     disabled: false,
-    width: "10rem"
+    width: "10rem",
   };
 
   const filterResult = (): Array<IEpisodes> => {
