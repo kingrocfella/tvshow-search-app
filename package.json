@@ -46,6 +46,7 @@
     ]
   },
   "devDependencies": {
-    "cypress": "^4.3.0"
+    "cypress": "^4.3.0",
+    "node-sass": "^4.13.1"
   }
 }

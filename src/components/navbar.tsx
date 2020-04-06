@@ -2,7 +2,7 @@ import React from "react";
 import { FaHome } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { ROUTES } from "../constants";
-import "./styles.css";
+import "./styles.scss";
 
 export default function Navbar(): JSX.Element {
   const handleRoutes = (): Array<string> => {

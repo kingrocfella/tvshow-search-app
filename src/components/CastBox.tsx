@@ -1,6 +1,6 @@
 import React from "react";
 import NotFoundPic from "../assets/img/notfound.png";
-import "./styles.css";
+import "./styles.scss";
 import {
   HTTPS,
   HandleNullValues,

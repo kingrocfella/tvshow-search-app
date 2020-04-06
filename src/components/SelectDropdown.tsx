@@ -1,6 +1,6 @@
 import React from "react";
 import { ISelect } from "../interfaces";
-import "./styles.css";
+import "./styles.scss";
 type SelectType = string | number;
 
 export default function SelectDropdown({

@@ -1,7 +1,9 @@
+@import "../index.scss";
+
 .episode-box {
   margin: 1rem;
   width: 18rem;
-  box-shadow: 5px 10px 18px #d6d6d6;
+  box-shadow: 5px 10px 18px $light-gray;
 }
 
 .episodes-text {
@@ -9,13 +11,13 @@
 }
 
 select {
-  border: 1px solid green !important;
+  border: 1px solid $primary-color !important;
   border-radius: 0px !important;
 }
 
 select:focus {
-  border: 1px solid green !important;
-  box-shadow: 0 0 0 0.2rem rgba(1, 202, 92, 0.25) !important;
+  border: 1px solid $primary-color !important;
+  box-shadow: 0 0 0 0.2rem $light-primary-color !important;
 }
 
 /* Modal CSS 
@@ -32,8 +34,8 @@ select:focus {
 }
 
 .modal-footer > .btn-secondary {
-  background-color: #dadada;
-  color: #000000;
+  background-color: $light-gray;
+  color: $secondary-color;
   border: none;
 }
 
@@ -54,29 +56,29 @@ select:focus {
 
 /* Track */
 .modal-body::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 10px #dadada;
+  box-shadow: inset 0 0 10px $light-gray;
   border-radius: 10px;
 }
 
 /* Handle */
 .modal-body::-webkit-scrollbar-thumb {
-  background: black;
+  background: $secondary-color;
   border-radius: 10px;
 }
 
 /* Handle on hover */
 .modal-body::-webkit-scrollbar-thumb:hover {
-  background: grey;
+  background: $light-gray;
 }
 
 /* for Firefox */
 .modal-body {
   overflow-y: scroll;
-  scrollbar-color: #000000 #dadada;
+  scrollbar-color: $secondary-color $light-gray;
   scrollbar-width: thin;
 }
 
 .app-navbar{
-  background-color: rgb(236, 236, 236);
-  box-shadow: 5px 10px 18px #d6d6d6;
+  background-color: $lighter-gray;
+  box-shadow: 5px 10px 18px $light-gray;
 }
