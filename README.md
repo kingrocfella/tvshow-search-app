@@ -14,6 +14,7 @@ TV Shows App requires [Node.js](https://nodejs.org/) v8+ to run.
 Install the dependencies and start the server after cloning this repository.
 
 ```sh
+$ git clone https://github.com/kingrocfella/tvshow-search-app.git
 $ npm install
 $ npm start
 ```
