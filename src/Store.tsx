@@ -8,8 +8,9 @@ const initState: IState = {
   episodesArray: [],
   seasonNumber: 0,
   movieID: 0,
-  movieCast: [],
+  movieCast: []
 };
+
 export const Store = React.createContext<IState | any>(initState);
 
 const Reducer = (state: IState, action: IAction) => {
@@ -25,7 +26,7 @@ const Reducer = (state: IState, action: IAction) => {
         episodesArray: [],
         movieCast: [],
         seasonNumber: 0,
-        movieID: 0,
+        movieID: 0
       });
 
     case CONSTANTS.STATE_SET_EPISODES:

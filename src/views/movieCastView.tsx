@@ -8,7 +8,6 @@ import { IAPIResponse, ILoading, ICast } from "../interfaces";
 import { ErrorHandler } from "../factories/ErrorHandler";
 import { ACTIONS } from "../actions";
 import { CONSTANTS } from "../constants";
-import "./styles.css";
 import { GetState } from "../PersistState";
 import { ROUTES } from "../constants";
 import Navbar from "../components/navbar";
@@ -16,8 +15,7 @@ import Navbar from "../components/navbar";
 const GET_CAST: string = "GET_CAST";
 const LOADING: string = "Loading ...";
 
-
-export default function MovieCastView(): JSX.Element {
+export default function MovieCastView(props: any): JSX.Element {
   const { state, dispatch } = React.useContext(Store);
   const [loading, handleLoading] = React.useState<string>("");
   const [error, handleError] = React.useState<string>("");
@@ -105,7 +103,8 @@ export default function MovieCastView(): JSX.Element {
       )}
       {!loading && (
         <>
-          <Navbar />
+          <Navbar toggler={props.toggler} />
+
           <section className="container-fluid mt-5 mb-5">
             <header className="text-center mt-4 mb-5">
               {

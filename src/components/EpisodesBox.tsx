@@ -1,7 +1,6 @@
 import React from "react";
 import NotFoundPic from "../assets/img/notfound.png";
 import { IEpisodes, IModal } from "../interfaces";
-import "./styles.scss";
 import {
   alphabeticDateFormat,
   FormatHTMLString,

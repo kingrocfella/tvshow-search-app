@@ -39,13 +39,29 @@ $lighter-gray: rgb(236, 236, 236);
   background-color: $light-gray;
 }
 
-body:before {
+@mixin bodyStyles-night() {
+  opacity: 0.9;
+}
+
+.App-Night-Mode:before {
+  background: url("./assets/img/bg_night.jpg") no-repeat center center fixed;
+  @include bodyStyles();
+  @include bodyStyles-night();
+}
+
+.App:before {
   background: url("./assets/img/bg.jpg") no-repeat center center fixed;
   @include bodyStyles();
 }
 
 @media only screen and (max-width: 500px) {
-  body:before {
+  .App-Night-Mode::before {
+    background: url("./assets/img/signupbg_potrait_night.jpg") no-repeat center
+      center fixed;
+    @include bodyStyles();
+    @include bodyStyles-night();
+  }
+  .App:before {
     background: url("./assets/img/signupbg_potrait.jpg") no-repeat center center
       fixed;
     @include bodyStyles();

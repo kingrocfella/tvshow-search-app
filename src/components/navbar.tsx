@@ -2,9 +2,8 @@ import React from "react";
 import { FaHome } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { ROUTES } from "../constants";
-import "./styles.scss";
 
-export default function Navbar(): JSX.Element {
+export default function Navbar(props: any): JSX.Element {
   const handleRoutes = (): Array<string> => {
     const hash: string = window.location.hash.split("#")[1];
     switch (hash.toString()) {
@@ -21,9 +20,12 @@ export default function Navbar(): JSX.Element {
 
   return (
     <nav className="navbar sticky-top navbar-light app-navbar">
-      <NavLink className="navbar-brand ml-4" to={ROUTES.home}>
-        <FaHome />
-      </NavLink>
+      <div>
+        {props.toggler}
+        <NavLink className="navbar-brand ml-4" to={ROUTES.home}>
+          <FaHome />
+        </NavLink>
+      </div>
       <NavLink className="btn btn-success btn-flat" to={handleRoutes()[0]}>
         {handleRoutes()[1]}
       </NavLink>

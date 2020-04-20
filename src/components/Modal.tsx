@@ -1,7 +1,6 @@
 import React from "react";
 import { Modal } from "react-bootstrap";
 import { IModal } from "../interfaces";
-import "./styles.scss";
 
 export default function ModalComponent({
   show,

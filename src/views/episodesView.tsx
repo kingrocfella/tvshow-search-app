@@ -8,7 +8,6 @@ import { IAPIResponse, ILoading, IEpisodes, ISelect } from "../interfaces";
 import { ErrorHandler } from "../factories/ErrorHandler";
 import { ACTIONS } from "../actions";
 import { CONSTANTS } from "../constants";
-import "./styles.css";
 import { GetState } from "../PersistState";
 import { ROUTES } from "../constants";
 import SelectDropdown from "../components/SelectDropdown";
@@ -20,7 +19,7 @@ const GET_EPISODES: string = "GET_EPISODES";
 const GET_SEASON_NUMBER: string = "GET_SEASON_NUMBER";
 const LOADING: string = "Loading ...";
 
-export default function EpisodesView(): JSX.Element {
+export default function EpisodesView(props: any): JSX.Element {
   const { state, dispatch } = React.useContext(Store);
   const [loading, handleLoading] = React.useState<string>("");
   const [error, handleError] = React.useState<string>("");
@@ -39,7 +38,7 @@ export default function EpisodesView(): JSX.Element {
         episodesArray:
           state.episodesArray.length > 0
             ? state.episodesArray
-            : persistedState.episodesArray,
+            : persistedState.episodesArray
       };
     } catch (error) {
       window.location.href = `${window.location.origin}${ROUTES.home}`;
@@ -106,7 +105,7 @@ export default function EpisodesView(): JSX.Element {
   };
 
   const loadingprops: ILoading = {
-    text: LOADING,
+    text: LOADING
   };
 
   const handleChange = (e: any): void => {
@@ -118,7 +117,7 @@ export default function EpisodesView(): JSX.Element {
     handleChange,
     defaultValue: "All Seasons",
     disabled: false,
-    width: "10rem",
+    width: "10rem"
   };
 
   const filterResult = (): Array<IEpisodes> => {
@@ -142,7 +141,7 @@ export default function EpisodesView(): JSX.Element {
       )}
       {!loading && (
         <>
-          <Navbar />
+          <Navbar toggler={props.toggler} />
           <section className="container-fluid mt-5 mb-5">
             <header className="text-center mt-4 mb-5">
               {

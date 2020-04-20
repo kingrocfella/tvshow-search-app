@@ -1,46 +1,73 @@
-.home-searchbox{
+.home-searchbox {
   border: 1px solid green;
   border-radius: 0px;
   background-color: rgb(243, 243, 243);
 }
 
-.home-searchbox:focus{
+.home-searchbox:focus {
   border: 1px solid green;
   box-shadow: 0 0 0 0.2rem rgba(1, 202, 92, 0.25);
   background-color: white;
 }
 
-.home-header{
+.App-Night-Mode .home-searchbox,
+.App-Night-Mode .home-searchbox:focus {
+  background-color: transparent;
+}
+
+.home-header {
   margin-top: 12rem;
 }
 
-.nospace-home-header{
+.nospace-home-header {
   margin-top: 1rem;
 }
 
-.loading{
+.loading {
   position: absolute;
   top: 40%;
   left: 45%;
 }
 
-.home-search-btn{
+.home-search-btn {
   background-color: rgb(243, 243, 243);
 }
 
-.episodes-section{
+.App-Night-Mode .home-search-btn {
+  background-color: transparent;
+}
+
+.episodes-section {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
 
-.episodes-seasons{
+.episodes-seasons {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 20rem;
 }
 
+.App-Night-Mode *,
+.App-Night-Mode .app-navbar {
+  background-color: transparent;
+  color: white;
+  box-shadow: none !important;
+}
+.App-Night-Mode .app-navbar {
+  background-color: rgb(49, 49, 49);
+  box-shadow: 0 0 6px black !important;
+}
 
-
+.App-Night-Mode select:focus,
+.App-Night-Mode select option {
+  background-color: rgb(49, 49, 49);
+  color: white;
+}
+.App-Night-Mode .alert-danger {
+  background-color: transparent;
+  color: red;
+}

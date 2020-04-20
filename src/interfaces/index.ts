@@ -23,6 +23,15 @@ export interface ILoading {
   text: string;
 }
 
+export interface IMessage {
+  text: string;
+}
+
+export interface IToggle {
+  initMode: boolean;
+  modeHandler: any;
+  text: string;
+}
 export interface IAlert {
   type: any;
   text: string;

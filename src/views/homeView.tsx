@@ -1,40 +1,54 @@
-import React from "react";
+import React, { Children } from "react";
 import { APICall } from "../services/apiservice";
 import Spinner from "../components/spinners";
 import apiroutes from "../services/apiroutes";
 import TVShowDetails from "../components/tvshowDetails";
-import "./styles.css";
 import { FormatSearchTerm, ConvertToArray } from "../factories/formatHandler";
 import {
   ITVShowSearch,
   IAPIResponse,
   ILoading,
-  IDatalist,
+  IDatalist
 } from "../interfaces";
 import { ErrorHandler } from "../factories/ErrorHandler";
 import { Store } from "../Store";
 import { ACTIONS } from "../actions";
 import { CONSTANTS } from "../constants";
 import DataList from "../components/datalist";
+
+// dogunfx imports
+import ErrorMessage from "../components/ErrorMessageComponent";
+
 type FormElem = React.FormEvent<HTMLFormElement>;
 
 const SEARCH: string = "SEARCH";
 const LOADING: string = "Loading ...";
 const AUTOSUGGESTIONS: string = "AUTOSUGGESTIONS";
+const EMPTY_ERROR_MESSAGE: string =
+  "Please provide a series name to search for";
 
-export default function HomeView(): JSX.Element {
+/**
+ *  The main view components starts from here
+ */
+export default function HomeView(props: any): JSX.Element {
   const [searchTerm, handleSearch] = React.useState<string>("");
   const [searchResult, handleSearchResult] = React.useState<
     ITVShowSearch | any
   >({});
   const [error, handleError] = React.useState<string>("");
   const [loading, handleLoading] = React.useState<string>("");
-  const { dispatch } = React.useContext(Store);
   const [suggestions, handleSuggestions] = React.useState<Array<any>>([]);
-
+  const { dispatch } = React.useContext(Store);
   const handleSubmit = (e: FormElem): void => {
     e.preventDefault();
-    handleSuggestions([]);
+
+    // the if statement below prevent the search button from making request when the input field is filled with spaces
+    if (!searchTerm.trim()) {
+      handleError(EMPTY_ERROR_MESSAGE);
+      return;
+    }
+
+    handleSuggestions([]); //reset the dropdown datalist
     handleAPICall(
       SEARCH,
       apiroutes.searchTVShow(FormatSearchTerm(searchTerm)),
@@ -46,7 +60,7 @@ export default function HomeView(): JSX.Element {
 
   const handleAutoSuggestions = () => {
     const trimWhiteSpaces = searchTerm.trim();
-    if (!trimWhiteSpaces) return;
+    if (!trimWhiteSpaces) return; // returns if empty space was in the search input field
     const trimDashes = trimWhiteSpaces.replace(/-/g, "");
     handleAPICall(
       AUTOSUGGESTIONS,
@@ -88,7 +102,7 @@ export default function HomeView(): JSX.Element {
         break;
 
       case AUTOSUGGESTIONS:
-        handleSuggestions(ConvertToArray(res));
+        handleSuggestions(ConvertToArray(res)); //update the datalist dropdown
         break;
 
       default:
@@ -98,11 +112,11 @@ export default function HomeView(): JSX.Element {
 
   const DataListProps: IDatalist = {
     id: "searchSuggestions",
-    data: suggestions,
+    data: suggestions
   };
 
   const loadingprops: ILoading = {
-    text: LOADING,
+    text: LOADING
   };
 
   const disabled: boolean = !searchTerm ? true : false;
@@ -110,6 +124,7 @@ export default function HomeView(): JSX.Element {
   return (
     <>
       <div className="container-fluid">
+        {props.toggler}
         <header
           className={`${
             searchResult.id ? "nospace-home-header" : "home-header"
@@ -123,11 +138,8 @@ export default function HomeView(): JSX.Element {
         <section>
           <div className="row justify-content-center mt-5">
             <div className="col-md-6">
-              {error && (
-                <div className="alert alert-danger text-center" role="alert">
-                  {error}
-                </div>
-              )}
+              {/* Replaced plain JSX  with an Custom Error Message Component */}
+              {error && <ErrorMessage text={error} />}
               <form onSubmit={handleSubmit}>
                 <div className="form-group">
                   <DataList {...DataListProps} />
@@ -137,9 +149,9 @@ export default function HomeView(): JSX.Element {
                     placeholder="Search for your favorite TV Show!"
                     className="form-control home-searchbox"
                     onChange={(e: any) => {
-                      handleSearch(e.target.value);
-                      handleError("");
-                      handleAutoSuggestions();
+                      handleSearch(e.target.value); //updates the search term state with the current value on the text field
+                      handleError(""); //clear error state  with the handleError state updater function
+                      handleAutoSuggestions(); // reform the current search term then call HandleAPICalls
                     }}
                     required
                   />
