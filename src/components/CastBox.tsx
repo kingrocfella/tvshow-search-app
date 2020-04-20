@@ -3,7 +3,7 @@ import NotFoundPic from "../assets/img/notfound.png";
 import {
   HTTPS,
   HandleNullValues,
-  alphabeticDateFormat
+  alphabeticDateFormat,
 } from "../factories/formatHandler";
 import { ICast } from "../interfaces";
 
@@ -41,7 +41,11 @@ export default function CastBox(props: ICast): JSX.Element {
                   </tr>
                   <tr>
                     <td>Birthday:</td>
-                    <td>{alphabeticDateFormat(`${props.person.birthday}`)}</td>
+                    <td>
+                      {props.person.birthday
+                        ? alphabeticDateFormat(`${props.person.birthday}`)
+                        : "N/A"}
+                    </td>
                   </tr>
                   <tr>
                     <td>Deathday:</td>

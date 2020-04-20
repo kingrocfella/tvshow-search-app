@@ -20,8 +20,8 @@ function App(): JSX.Element {
       initMode={UI_MODES.NIGHT}
       text={TOGGLER_CAPTION}
       modeHandler={() =>
-        handleUIMode(preMode =>
-          preMode == UI_MODES.NIGHT ? UI_MODES.DAY : UI_MODES.NIGHT
+        handleUIMode((preMode) =>
+          preMode === UI_MODES.NIGHT ? UI_MODES.DAY : UI_MODES.NIGHT
         )
       }
     />
@@ -35,17 +35,17 @@ function App(): JSX.Element {
           <Route
             exact
             path={ROUTES.home}
-            render={routeProps => <HomeView toggler={toggler} />}
+            render={(routeProps) => <HomeView toggler={toggler} />}
           />
           <Route
             exact
             path={ROUTES.episodes}
-            render={routeProps => <EpisodesView toggler={toggler} />}
+            render={(routeProps) => <EpisodesView toggler={toggler} />}
           />
           <Route
             exact
             path={ROUTES.casts}
-            render={routeProps => <CastView toggler={toggler} />}
+            render={(routeProps) => <CastView toggler={toggler} />}
           />
         </Switch>
       </div>

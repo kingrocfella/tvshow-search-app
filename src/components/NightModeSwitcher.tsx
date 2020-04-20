@@ -22,7 +22,7 @@ export default function NightModeToggle(switchState: IToggle) {
     <FormControlLabel
       checked={state.switchCTRL}
       control={
-        <Switch onChange={handleChange} name="switchCTRL" color="primary" />
+        <Switch onChange={handleChange} name="switchCTRL" style={{color: "green"}} />
       }
       label={state.text}
     />

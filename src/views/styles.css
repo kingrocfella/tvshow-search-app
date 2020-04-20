@@ -13,6 +13,11 @@
 .App-Night-Mode .home-searchbox,
 .App-Night-Mode .home-searchbox:focus {
   background-color: transparent;
+  color: white;
+}
+
+.MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track {
+  background-color: rgb(204, 204, 204) !important;
 }
 
 .home-header {
