@@ -2,7 +2,7 @@
 
 This application allows TV Show fans search for their favorite TV shows and view the individual episodes, a summary of each episode, filter the result by season for easier navigation and better user experience.
 It also shows the casts of the entire TV show.
-It also has a Night Mode Feature for greater user experience.
+It also has a Night Mode Feature for greater user experience. <br/>
 This app consumes the free public [TVMAZE](https://www.tvmaze.com/api) API.
 
 ### Live Demo
